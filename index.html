@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/webp" href="/usa-trip-planner-favicon.webp" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#1e3a8a" />
+    
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="/usa_trip_planner_white_logo.png" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Discover the beauty of the United States with curated itineraries, destination guides, and travel tips. Plan your perfect USA trip with our interactive tools." />
+    <meta name="keywords" content="USA travel, trip planner, American destinations, itineraries, travel guide, vacation planning" />
+    <meta name="author" content="USA Trip Planner" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="USA Trip Planner | Dream · Plan · Travel" />
+    <meta property="og:description" content="Discover the beauty of the United States with curated itineraries, destination guides, and travel tips." />
+    <meta property="og:image" content="https://usatripplanner.com/usa_trip_planner_hero.jpg" />
+    <meta property="og:url" content="https://usatripplanner.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="USA Trip Planner" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="USA Trip Planner | Dream · Plan · Travel" />
+    <meta name="twitter:description" content="Discover the beauty of the United States with curated itineraries, destination guides, and travel tips." />
+    <meta name="twitter:image" content="https://usatripplanner.com/usa_trip_planner_hero.jpg" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "USA Trip Planner",
+      "description": "Discover the beauty of the United States with curated itineraries, destination guides, and travel tips.",
+      "url": "https://usatripplanner.com",
+      "applicationCategory": "Travel",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "name": "Free Trip Planning",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "USA Trip Planner"
+      }
+    }
+    </script>
+    
+    <title>USA Trip Planner | Dream · Plan · Travel</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('SW registered: ', registration);
+          })
+          .catch(error => {
+            console.log('SW registration failed: ', error);
+          });
+      }
+    </script>
+  </body>
+</html>
