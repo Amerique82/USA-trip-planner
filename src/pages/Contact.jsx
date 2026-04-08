@@ -6,6 +6,8 @@ export default function Contact() {
   const [sent, setSent] = useState(false)
   const [errors, setErrors] = useState({})
   const [touched, setTouched] = useState({})
+  const [submitting, setSubmitting] = useState(false)
+  const [serverError, setServerError] = useState('')
 
   const validateField = (name, value) => {
     const newErrors = { ...errors }
@@ -78,17 +80,33 @@ export default function Contact() {
     return newErrors
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
-    
+
     const allTouched = Object.keys(form).reduce((acc, field) => ({ ...acc, [field]: true }), {})
     setTouched(allTouched)
-    
+
     const formErrors = validateForm()
     setErrors(formErrors)
-    
+
     if (Object.keys(formErrors).length === 0) {
-      setSent(true)
+      setSubmitting(true)
+      setServerError('')
+      try {
+        const data = new FormData()
+        Object.entries(form).forEach(([k, v]) => data.append(k, v))
+
+        const res = await fetch('/contact_form.php', { method: 'POST', body: data })
+        if (res.ok) {
+          setSent(true)
+        } else {
+          setServerError('Something went wrong. Please try again.')
+        }
+      } catch {
+        setServerError('Network error. Please check your connection and try again.')
+      } finally {
+        setSubmitting(false)
+      }
     }
   }
 
@@ -130,6 +148,13 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
+
+                {serverError && (
+                  <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm text-red-700">
+                    {serverError}
+                  </div>
+                )}
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1.5">Your Name <span className="text-accent-500">*</span></label>
@@ -217,9 +242,9 @@ export default function Contact() {
                 <button 
                   type="submit" 
                   className="btn-accent px-8 py-3 text-sm font-semibold w-full disabled:opacity-50 disabled:cursor-not-allowed"
-                  disabled={Object.keys(errors).some(key => errors[key]) || Object.values(form).some(val => !val.toString().trim())}
+                  disabled={submitting || Object.keys(errors).some(key => errors[key]) || Object.values(form).some(val => !val.toString().trim())}
                 >
-                  Send Message
+                  {submitting ? 'Sending…' : 'Send Message'}
                 </button>
               </form>
             )}
