@@ -96,7 +96,7 @@ export default function Contact() {
         const data = new FormData()
         Object.entries(form).forEach(([k, v]) => data.append(k, v))
 
-        const res = await fetch('/contact_form.php', { method: 'POST', body: data })
+        const res = await fetch('https://www.usa-trip-planner.com/contact_form.php', { method: 'POST', body: data })
         if (res.ok) {
           setSent(true)
         } else {
