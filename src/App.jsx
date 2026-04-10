@@ -16,6 +16,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import CookiePolicy from './pages/CookiePolicy'
+import NotFound from './pages/NotFound'
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useSkipNavigation } from './utils/accessibility.jsx'
@@ -75,6 +76,7 @@ function AppLayout() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/cookies" element={<CookiePolicy />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
