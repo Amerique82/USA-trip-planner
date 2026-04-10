@@ -14,7 +14,15 @@ export default function NotFound() {
         </div>
 
         {/* Icon */}
-        <div className="text-6xl mb-6">🗺️</div>
+        <div className="flex justify-center mb-6" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" fill="none" width="72" height="72">
+            <circle cx="36" cy="36" r="34" stroke="#1a2d8a" stroke-width="1.5" opacity="0.15"/>
+            <path d="M20 52 L28 28 L36 40 L44 24 L52 52" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="36" cy="40" r="2.5" fill="#f97316"/>
+            <circle cx="44" cy="24" r="2.5" fill="#1a2d8a"/>
+            <line x1="16" y1="56" x2="56" y2="56" stroke="#1a2d8a" stroke-width="1.5" stroke-linecap="round" opacity="0.2"/>
+          </svg>
+        </div>
 
         {/* Heading */}
         <h1 className="font-heading text-3xl md:text-4xl font-bold text-primary-900 mb-4">
