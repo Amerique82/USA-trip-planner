@@ -138,5 +138,5 @@ dist
 .DS_Store
 **/.DS_Store
 
-# Claude Code (AI assistant files)
+# Claude Code (AI file organizer)
 .claude/
